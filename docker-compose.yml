@@ -1,19 +1,12 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  travellerapp:
-    image: tungtrandev/travellerapp:latest # <== Sửa thành Docker Hub username/repo của bạn
-    container_name: travellerapp
+  traveller-app:
+    image: tungtrandev/travellerapp:latest
+    container_name: traveller-app
     restart: always
     ports:
-      - "80:8080" # Map port 80 trên VPS sang port 8080 trong container
+      - "80:8080"
     environment:
-      - NODE_ENV=production
-    volumes:
-      - .:/app
-    networks:
-      - traveller_network
-
-networks:
-  traveller_network:
-    driver: bridge
+      NODE_ENV: production
+      DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
