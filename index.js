@@ -3,14 +3,12 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 const GIT_SHA = process.env.GIT_SHA || 'local';
-const BUILD_TIME = new Date().toLocaleString('vi-VN'); // Thời gian build
 
 // Route check health
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
     git_sha: GIT_SHA,
-    build_time: BUILD_TIME,
   });
 });
 
@@ -49,10 +47,6 @@ app.get('/', (req, res) => {
       margin-bottom: 10px;
       font-size: 2em;
     }
-    p {
-      margin-bottom: 15px;
-      font-size: 1em;
-    }
     small {
       display: block;
       margin-top: 10px;
@@ -60,7 +54,7 @@ app.get('/', (req, res) => {
       color: #d1d5db;
     }
     button {
-      margin-top: 15px;
+      margin: 10px 5px 0 5px;
       padding: 10px 20px;
       background: #48bb78;
       border: none;
@@ -86,8 +80,9 @@ app.get('/', (req, res) => {
     <h1>🚀 Hello CI/CD</h1>
     <p>Triển khai bằng <strong>GitHub Actions + Docker</strong></p>
     <small><strong>Commit SHA:</strong> ${GIT_SHA}</small>
-    <small><strong>Build Time:</strong> ${BUILD_TIME}</small>
-    <button onclick="document.getElementById('msg').innerText='👉 Xin chào DevOps!'">✍️ Ghi thêm</button>
+    
+    <button onclick="document.getElementById('msg').innerText='👉 Xin chào DevOps!'">➕ Thêm chữ</button>
+    <button onclick="document.getElementById('msg').innerText=''">➖ Xóa chữ</button>
     <p id="msg"></p>
   </div>
 </body>
