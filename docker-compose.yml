@@ -6,9 +6,12 @@ services:
     container_name: traveller-app
     restart: always
     ports:
-      - "80:8080"
+      - "80:3000"   # nếu là React (CRA mặc định 3000)
+      # hoặc "80:8080" nếu backend chạy ở 8080
     volumes:
-      - ./src:/app/src   # map code local vào container
+      - ./src:/app/src
+      - /app/node_modules   # tránh ghi đè node_modules
     environment:
       NODE_ENV: development
-      DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
+    command: npm start   # frontend React
+    # hoặc command: npm run dev   # backend Node.js với nodemon
