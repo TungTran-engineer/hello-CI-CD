@@ -73,6 +73,12 @@ app.get('/', (req, res) => {
     button:hover {
       background: #38a169;
     }
+    #msg {
+      margin-top: 15px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #ffd700;
+    }
   </style>
 </head>
 <body>
@@ -81,7 +87,8 @@ app.get('/', (req, res) => {
     <p>Triển khai bằng <strong>GitHub Actions + Docker</strong></p>
     <small><strong>Commit SHA:</strong> ${GIT_SHA}</small>
     <small><strong>Build Time:</strong> ${BUILD_TIME}</small>
-    <button onclick="window.location.reload()">🔄 Reload Page</button>
+    <button onclick="document.getElementById('msg').innerText='👉 Xin chào DevOps!'">✍️ Ghi thêm</button>
+    <p id="msg"></p>
   </div>
 </body>
 </html>`);
