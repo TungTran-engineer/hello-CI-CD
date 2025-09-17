@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   traveller-app:
-    image: tungtrandev/travellerapp:latest
+    build: .   # build từ Dockerfile trong thư mục hiện tại
     container_name: traveller-app
     restart: always
     ports:
